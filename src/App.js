@@ -1,5 +1,24 @@
 import './App.css';
 import Customer from './components/Customer';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import Paper from '@material-ui/core/Paper'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto",
+    color: 'red'
+  },
+  table: {
+    minWidth: 1080
+  }
+}));
 
 const customers = [
   {
@@ -14,7 +33,7 @@ const customers = [
   id: 2,
   image: 'https://placeimg.com/64/64/2',
   name: 'Ron',
-  birthday: '94129',
+  birthday: '940129',
   gender: 'Male',
   job: 'Doctor'
 },
@@ -29,22 +48,39 @@ const customers = [
 ]
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div>
-      {customers.map(customer => {
-        return (
-          <Customer
-            key={customer.id}
-            id={customer.id}
-            image={customer.image}
-            name={customer.name}
-            birthday={customer.birthday}
-            gender={customer.gender}
-            job={customer.job}
-          />
-        )
-      })}
-    </div>
+    <Paper className={classes.root}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell>IMAGE</TableCell>
+            <TableCell>NAME</TableCell>
+            <TableCell>BIRTHDAY</TableCell>
+            <TableCell>GENDER</TableCell>
+            <TableCell>JOB</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {customers.map(customer => {
+          return (
+            <Customer
+              key={customer.id}
+              id={customer.id}
+              image={customer.image}
+              name={customer.name}
+              birthday={customer.birthday}
+              gender={customer.gender}
+              job={customer.job}
+            />
+          )
+        })}
+        </TableBody>
+      </Table>
+      
+    </Paper>
   );
 }
 
