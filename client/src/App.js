@@ -8,6 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState, useEffect } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,14 +25,14 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const [state, setState] = useState({
     customers: []
-  })
+  });
   const classes = useStyles();
 
   const callApi = async () => {
     const response = await fetch('/api/customers');
     const body = await response.json();
     return body;
-  }
+  };
 
   useEffect(() => {
     callApi()
@@ -65,7 +66,13 @@ function App() {
               job={customer.job}
             />
           )
-        }) : ""}
+        }) : 
+        <TableRow>
+          <TableCell colSpan="6" align="center">
+            <CircularProgress/>
+          </TableCell>
+        </TableRow>
+        }
         </TableBody>
       </Table>
       
