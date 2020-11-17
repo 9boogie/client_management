@@ -1,5 +1,6 @@
 import './App.css';
 import Customer from './components/Customer';
+import CustomerAdd from './components/CustomerAdd';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -41,7 +42,8 @@ function App() {
   }, []);
 
   return (
-    <Paper className={classes.root}>
+    <div>
+      <Paper className={classes.root}>
       <Table>
         <TableHead>
           <TableRow>
@@ -75,8 +77,11 @@ function App() {
         }
         </TableBody>
       </Table>
-      
     </Paper>
+
+    <CustomerAdd/>
+    </div>
+    
   );
 }
 
