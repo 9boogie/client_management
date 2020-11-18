@@ -8,7 +8,7 @@ const initialState = {
   gender: '',
   job: '',
   fileName: ''
-}
+};
 
 export default function CustomerAdd(props) {
   const [form, setForm] = useState(initialState);
@@ -36,20 +36,23 @@ export default function CustomerAdd(props) {
     addCustomer()
       .then((response) => {
         console.log(response.data);
-      })
+      });
+    setForm(initialState);
+    window.location.reload();
   };
 
   const handleFileChange = (e) => {
     setForm({
       file: e.target.files[0],
-      fileName: e.targer.value
+      fileName: e.target.value
     })
   };
 
-  const handleValueChange = (e) => {
-    let nextState = {};
-    nextState[e.target.name] = e.target.value;
-    setForm(nextState);
+  const handleValueChange = ({ target }) => {
+    setForm({
+      ...form,
+      [target.name]: target.value
+    });
   }
 
   return (

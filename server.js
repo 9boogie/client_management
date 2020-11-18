@@ -11,6 +11,11 @@ const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 const mysql = require('mysql');
 
+const multer = require('multer');
+const upload = multer({ dest: "./upload" });
+
+app.use("/image", express.static("./upload"));
+
 const connection = mysql.createConnection({
   host: conf.host,
   user: conf.user,
@@ -23,9 +28,24 @@ app.get('/api/customers', (req, res) => {
   connection.query(
     'SELECT * FROM customer;',
     (err, rows, fields) => {
+      console.log('Rows :', rows)
       res.send(rows);
     }
   )
+});
+
+app.post("/api/customers", upload.single("image"), (req, res) => {
+  let sql = "INSERT INTO CUSTOMER VALUES (null, ?, ?, ?, ?, ?)";
+  let image = "/image/" + req.file.filename;
+  let name = req.body.name;
+  let birthday = req.body.birthday;
+  let gender = req.body.gender;
+  let job = req.body.job;
+  let params = [image, name, birthday, gender, job];
+  connection.query(sql, params, (err, rows, fiedls) => {
+    console.log(err);
+    res.send(rows);
+  });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
