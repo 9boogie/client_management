@@ -6,7 +6,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import Paper from '@material-ui/core/Paper'
+import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState, useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -37,6 +37,7 @@ function App() {
   };
 
   useEffect(() => {
+      console.log('Check state', state, updateData)
       callApi()
         .then(res => setState((prev) =>  ({...prev, customers: res})))
         .catch(err => console.log(err));
