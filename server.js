@@ -28,7 +28,6 @@ app.get('/api/customers', (req, res) => {
   connection.query(
     'SELECT * FROM customer;',
     (err, rows, fields) => {
-      console.log('Rows :', rows)
       res.send(rows);
     }
   )

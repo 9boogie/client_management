@@ -37,8 +37,8 @@ export default function CustomerAdd(props) {
       .then((response) => {
         console.log(response.data);
       });
+    props.setUpdateData(true);
     setForm(initialState);
-    window.location.reload();
   };
 
   const handleFileChange = (e) => {
@@ -54,7 +54,7 @@ export default function CustomerAdd(props) {
       [target.name]: target.value
     });
   }
-
+ 
   return (
     <form onSubmit={handleFormSubmit}>
       <h2>Add Client</h2>

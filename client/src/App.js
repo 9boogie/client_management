@@ -25,8 +25,9 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const [state, setState] = useState({
-    customers: []
+    customers: ''
   });
+  const [updateData, setUpdateData] = useState(false);
   const classes = useStyles();
 
   const callApi = async () => {
@@ -36,10 +37,12 @@ function App() {
   };
 
   useEffect(() => {
-    callApi()
-      .then(res => setState({customers: res}))
-      .catch(err => console.log(err))
-  }, []);
+      callApi()
+        .then(res => setState((prev) =>  ({...prev, customers: res})))
+        .catch(err => console.log(err));
+      
+      setUpdateData(false);
+  }, [updateData]);
 
   return (
     <div>
@@ -79,7 +82,7 @@ function App() {
       </Table>
     </Paper>
 
-    <CustomerAdd/>
+    <CustomerAdd setUpdateData={setUpdateData}/>
     </div>
     
   );
