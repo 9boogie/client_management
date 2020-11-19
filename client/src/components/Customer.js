@@ -1,8 +1,7 @@
 import React from 'react';
-import CustomerProfile from './CustomerProfile';
-import CustomerInfo from './CustomerInfo';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import CustomerDelete from './CustomerDelete';
 
 export default function Customer(props) {
 
@@ -14,6 +13,7 @@ export default function Customer(props) {
       <TableCell>{props.birthday}</TableCell>
       <TableCell>{props.gender}</TableCell>
       <TableCell>{props.job}</TableCell>
+      <TableCell><CustomerDelete id={props.id} setUpdateData={props.setUpdateData}/></TableCell>
     </TableRow>
   )
 

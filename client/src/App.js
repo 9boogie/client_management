@@ -56,6 +56,7 @@ function App() {
             <TableCell>BIRTHDAY</TableCell>
             <TableCell>GENDER</TableCell>
             <TableCell>JOB</TableCell>
+            <TableCell>SETTING</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -69,6 +70,7 @@ function App() {
               birthday={customer.birthday}
               gender={customer.gender}
               job={customer.job}
+              setUpdateData={setUpdateData}
             />
           )
         }) : 
