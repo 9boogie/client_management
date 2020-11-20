@@ -4,6 +4,9 @@ Practice of client management system using React.
   - A user can delete the existing client
   - A user can search the exisiting client by their name
 
+## Final Product
+!["Screenshot of Main Page"]()
+
 ## Tech Stack
 Back End: NodeJs, Express, MySQL
 Front End: React, Material UI
