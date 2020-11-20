@@ -5,7 +5,7 @@ Practice of client management system using React.
   - A user can search the exisiting client by their name
 
 ## Final Product
-!["Screenshot of Main Page"]()
+!["Screenshot of Main Page"](https://github.com/9boogie/client_management/blob/master/docs/Main%20Page.png)
 
 ## Tech Stack
 Back End: NodeJs, Express, MySQL
