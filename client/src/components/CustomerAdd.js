@@ -61,7 +61,7 @@ export default function CustomerAdd(props) {
         console.log(response.data);
       });
     setForm(initialState);
-    props.setUpdateData(true);
+    props.setState((prev) =>  ({...prev, complete: true}));
     setOpen(false);
   };
 
@@ -77,7 +77,7 @@ export default function CustomerAdd(props) {
       ...form,
       [target.name]: target.value
     });
-  }
+  };
  
   return (
     <div>

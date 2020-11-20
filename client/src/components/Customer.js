@@ -13,7 +13,7 @@ export default function Customer(props) {
       <TableCell>{props.birthday}</TableCell>
       <TableCell>{props.gender}</TableCell>
       <TableCell>{props.job}</TableCell>
-      <TableCell><CustomerDelete id={props.id} setUpdateData={props.setUpdateData}/></TableCell>
+      <TableCell><CustomerDelete id={props.id} setState={props.setState}/></TableCell>
     </TableRow>
   )
 

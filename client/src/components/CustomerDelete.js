@@ -23,7 +23,7 @@ export default function CustomerDelete(props) {
     fetch(url, {
       method: 'DELETE'
     });
-    props.setUpdateData(true);
+    props.setState((prev) =>  ({...prev, complete: true}));
   };
 
   return (
